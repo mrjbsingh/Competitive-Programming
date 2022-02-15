@@ -18,12 +18,12 @@ public class HillArea{
         for (int i = 0; i < size1; i++) {
             B.add(sc.nextInt());
         }
-        ArrayList<Integer> res;
-        PonnyMobile pm = new PonnyMobile();
-        res = pm.solve(A,B);
-        for (int i = 0; i < res.size(); i++) {
-            System.out.print(res.get(i) +" ");
-        }
+        String res;
+        HillArea pm = new HillArea();
+        res = pm.solve(A);
+        // for (int i = 0; i < res.size(); i++) {
+        //     System.out.print(res.get(i) +" ");
+        // }
     }
     public String solve(ArrayList<Integer> A) {
         int sum=0;
