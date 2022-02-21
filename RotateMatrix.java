@@ -42,11 +42,11 @@ public class RotateMatrix{
 
     void print2DArray(ArrayList<ArrayList<Integer>> A){
         for(int i=0;i<A.size();i++){
-              for(int j=0;j<i;j++){
+              for(int j=0;j<A.get(i).size();j++){
                   System.out.print(A.get(i).get(j)+" ");
               }
               System.out.println();
-          }
+          } 
     }
     
 }
