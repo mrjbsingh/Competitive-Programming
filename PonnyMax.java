@@ -34,32 +34,4 @@ public class PonnyMax{
         }
         System.out.println();
     }
-    public int customBSearch(int a[], int l, int h, int elem){
-        int mid, ans, size=h;
-        ans = 0;
-        //System.out.println("elem "+ elem);
-        while(l<=h){
-            mid = (h+l)/2;
-            //System.out.println("l "+l+" h "+h+" mid "+mid);
-            if(a[mid] == elem){
-                ans = mid;
-                break;
-            }
-            else if(a[mid]<elem){
-                //customBSearch(a, mid+1,h, elem);
-                l= mid+1;
-                ans = mid;
-            }
-            else if(a[mid]>elem){
-                ans = a[mid]>elem? mid-1:mid;
-                h= mid-1;
-            }
-            else{
-
-            }
-        }
-        if(h<0) ans = a[0]>elem? -1:0;
-        else if(l>size) ans = size;
-        return ans+1;
-    }
 }
