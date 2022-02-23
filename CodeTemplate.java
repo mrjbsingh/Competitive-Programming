@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class CodeTemplate{
@@ -72,5 +73,35 @@ public class CodeTemplate{
         if(h<0) ans = a[0]>elem? -1:0;
         else if(l>size) ans = size;
         return ans+1;
+    }
+    public class Interval{
+        int start;
+        int end;
+    
+        public Interval(){
+            start=0;
+            end=0;
+        }
+        public Interval(int s, int e){
+            start = s;
+            end = e;
+        }
+    }
+    /*
+    How to use comparator on class while sorting on specified value
+
+        Collections.sort(intervals, new IntervalComparator());
+
+    */
+    class IntervalComparator implements Comparator<Interval>{
+        public int compare(Interval i1, Interval i2){
+            if(i1.start == i2.start){
+                return 0;
+            }
+            else if(i1.start > i2.start)
+                return 1;
+            else
+                return -1;
+        }
     }
 }
