@@ -4,9 +4,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 /*
-Given a vector A of non-negative integers representing an elevation map 
-where the width of each bar is 1, compute how much water it is able to 
-trap after raining.
+Given a collection of intervals, merge all overlapping intervals.
  */
 public class MergeIntervals{
     public static void main(String[] args) {
