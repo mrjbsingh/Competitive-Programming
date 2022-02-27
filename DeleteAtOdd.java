@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 /*
 Given an integer A which denotes the number of people standing in the queue.
