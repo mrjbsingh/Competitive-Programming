@@ -131,4 +131,24 @@ public class CodeTemplate{
             return gcd(b%a, a);
         }
     }
+
+    // primeNum[i]==1 means i is prime num
+    // 0 and 1 is not prime num so intialize by 0 or false
+
+    int [] sieveGetAllPrime(int A){
+        int primeNum[] = new int[A+1];
+        for(int i=2; i<A; i++){
+            primeNum[i]=1;
+        }
+        for(int i=2; i*i<=A; i++){
+            if(primeNum[i]==0)
+                continue;
+            else{
+                for(int j=i*i; j<=A; j+=i){
+                    primeNum[j]=0;
+                }
+            }
+        }
+        return primeNum;
+    }
 }
