@@ -1,11 +1,15 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
-Given an integer A, return the number of trailing zeroes in A! i.e. factorial of A.
+Given an array of integers A, find and return the count of divisors of each element of the array.
 
-Note: Your solution should run in logarithmic time complexity.
-if A=6 then A! = 120.
- Number of trailing zeros = 1. So, return 1.
+NOTE: Order of the resultant array should be same as the input array.
+
+The number of divisors of 2 : [1, 2], 3 : [1, 3], 4 : [1, 2, 4], 5 : [1, 5]
+ So the count will be [2, 2, 3, 2].
+
+ https://www.scaler.com/academy/mentee-dashboard/class/19125/assignment/problems/4107
+ 
  */
 public class CountDivisor{
     public static void main(String[] args) {
@@ -21,9 +25,6 @@ public class CountDivisor{
         for(int i=0; i<res.size(); i++){
             System.out.print(res.get(i)+" ");
         }
-            
-        
-       
         
     }
     public ArrayList<Integer> solve(ArrayList<Integer> A) {
