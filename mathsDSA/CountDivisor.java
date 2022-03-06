@@ -1,3 +1,4 @@
+package mathsDSA;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
