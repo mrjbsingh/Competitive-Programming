@@ -1,4 +1,6 @@
+package mathsDSA;
 import java.util.Scanner;
+
 /*
 Given two Integers A, B. You have to calculate (A ^ (B!)) % (1e9 + 7).
 

@@ -7,6 +7,7 @@ all the numbers less than or equal to B together.
 
 Note: It is possible to swap any two elements, 
 not necessarily consecutive.
+Good qst
 */
 public class MinSwapsLessN{
     public static void main(String[] args) {
