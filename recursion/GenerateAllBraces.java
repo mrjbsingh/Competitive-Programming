@@ -2,7 +2,22 @@ package recursion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+Input 1:
 
+A = 3
+Input 2:
+
+A = 1
+
+Example Output
+Output 1:
+
+[ "((()))", "(()())", "(())()", "()(())", "()()()" ]
+Output 2:
+
+[ "()" ]
+ */
 public class GenerateAllBraces{
     public static void main(String[] args) {
         System.out.println("hello");
