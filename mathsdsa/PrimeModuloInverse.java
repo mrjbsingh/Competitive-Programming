@@ -1,4 +1,4 @@
-package mathsDSA;
+package mathsdsa;
 import java.util.Scanner;
 
 public class PrimeModuloInverse{
