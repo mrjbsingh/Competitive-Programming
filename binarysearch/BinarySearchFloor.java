@@ -1,7 +1,11 @@
 package binarysearch;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+Given a sorted array A of size N and a target value B, 
+return the index (0-based indexing) if the target is found.
+If not, return the index where it would be if it were inserted in order.
+*/
 public class BinarySearchFloor{
     public static void main(String[] args) {
         System.out.println("hello");
