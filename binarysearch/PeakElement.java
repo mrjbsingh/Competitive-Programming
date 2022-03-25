@@ -1,6 +1,5 @@
 package binarysearch;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 /*
 Given an array of integers A, find and return the peak element in it. 
