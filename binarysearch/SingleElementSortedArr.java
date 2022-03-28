@@ -2,11 +2,10 @@ package binarysearch;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
-Given an array of integers A, find and return the peak element in it. 
-An array element is peak if it is NOT smaller than its neighbors.
+Given a sorted array of integers A where every element appears twice except 
+for one element which appears once, find and return this single element that appears only once.
 
-For corner elements, we need to consider only one neighbor. 
-We ensure that answer will be unique.
+NOTE: Users are expected to solve this in O(log(N)) time.
 */
 public class SingleElementSortedArr{
     public static void main(String[] args) {
