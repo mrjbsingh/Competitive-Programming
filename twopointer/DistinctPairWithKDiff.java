@@ -1,14 +1,14 @@
 package twopointer;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 /*
-Given an array of positive integers A and an integer B, find and return first continuous subarray which adds to B.
+Given an one-dimensional integer array A of size N and an integer B.
 
-If the answer does not exist return an array with a single element "-1".
-
-First sub-array means the sub-array for which starting index in minimum.
+Count all distinct pairs with difference equal to B.
 */
-public class SubArrayKSum{
+public class DistinctPairWithKDiff{
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
@@ -19,47 +19,35 @@ public class SubArrayKSum{
         }
         int B = sc.nextInt();
         
-        SubArrayKSum pm = new SubArrayKSum();
-        ArrayList<Integer> res = pm.solve(A, B);
-        for (int index = 0; index < res.size(); index++) {
-            System.out.print(res.get(index));
-        }
+        DistinctPairWithKDiff pm = new DistinctPairWithKDiff();
+        int res = pm.solve(A, B);
+        
+        System.out.print(res);
+        
         
         
     }
-    public ArrayList<Integer> solve(ArrayList<Integer> A, int B) {
-        int i, j, n= A.size();
-        long sum[] = new long[n+1];
-        sum[0]=0;
-        for(int k=0;k<n;k++){
-            sum[k+1]= sum[k]+A.get(k);
-            
+    public int solve(ArrayList<Integer> A, int B) {
+        Map<Integer, Integer> hmap = new HashMap<>();
+
+        for(int i=0; i<A.size();i++){
+            if(hmap.containsKey(A.get(i))){
+                int val = hmap.get(A.get(i));
+                hmap.put(A.get(i), ++val);
+            }
+            else
+                hmap.put(A.get(i), 1);
         }
-        i=0; j=1;
-        long temp=0;
-        while(i<=n && j<=n){
-            temp= sum[j]-sum[i];
-          
-            if((int)temp== B){
-                break;
+        int count=0;
+        for(Map.Entry<Integer, Integer> e: hmap.entrySet()){
+            if(B==0 && e.getValue()>1){
+                count++;
             }
-            else if((int)temp<B){
-                j++;
-            }
-            else {
-                i++;
+            else if(B!=0 && hmap.containsKey(e.getKey()+B)){
+                count++;
             }
         }
-         ArrayList<Integer> res = new ArrayList<Integer>();
-        if(i==n+1 || j== n+1){
-            res.add(-1);
-            return res;
-        }
-       
-        for(int k=i; k<j; k++){
-            res.add(A.get(k));
-        }
-        return res;
+        return count;
     }
     
 }
