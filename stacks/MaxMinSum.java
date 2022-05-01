@@ -36,47 +36,47 @@ public class MaxMinSum{
     }
     public int solve(ArrayList<Integer> A) {
         Stack<Integer> st = new Stack<>();
-            ArrayList<Integer> smallLeft = getNearestSmallElemLeft(A);
-            ArrayList<Integer> smallRight = getNearestSmallElemRight(A);
-            ArrayList<Integer> greaterLeft = getNearestGreaterElemLeft(A);
-            ArrayList<Integer> greaterRight = getNearestGreaterElemRight(A);
+            ArrayList<Long> smallLeft = getNearestSmallElemLeft(A);
+            ArrayList<Long> smallRight = getNearestSmallElemRight(A);
+            ArrayList<Long> greaterLeft = getNearestGreaterElemLeft(A);
+            ArrayList<Long> greaterRight = getNearestGreaterElemRight(A);
     
             long sum = 0;
             long M = 1000000007;
             for(int i=0; i<A.size(); i++){
-                long subArrElemMin = ((smallRight.get(i)-i)*(i-smallLeft.get(i)))%M;
-                long subArrElemMax = ((greaterRight.get(i)-i)*(i-greaterLeft.get(i)))%M;
-                //System.out.print("")
-                sum = (sum + (A.get(i)*((subArrElemMax - subArrElemMin + M)%M))%M)%M;
+                long subArrElemMin = ((smallRight.get(i)-(long)i)*((long)i-smallLeft.get(i)))%M;
+                long subArrElemMax = ((greaterRight.get(i)-(long)i)*((long)i-greaterLeft.get(i)))%M;
+                long tempSum = ((long)A.get(i)*((subArrElemMax - subArrElemMin + M)%M))%M;
+                sum = (sum + (tempSum+ M)%M)%M;
             }
             return (int)sum;
         }
     
-        public ArrayList<Integer> getNearestSmallElemLeft(ArrayList<Integer> A){
+        public ArrayList<Long> getNearestSmallElemLeft(ArrayList<Integer> A){
             Stack<Integer> st = new Stack<>();
-            ArrayList<Integer> res = new ArrayList<>();
+            ArrayList<Long> res = new ArrayList<>();
     
             for(int i=0; i< A.size(); i++){
     
-                while(!st.empty() && A.get((Integer)st.peek())>=A.get(i)){
+                while(!st.empty() && A.get((int)st.peek())>A.get(i)){
                     st.pop();
                 }
                 if(st.empty()){
-                    res.add(-1);
+                    res.add((long)-1);
                 }
                 else{
-                    res.add((Integer)st.peek());
+                    res.add((long)st.peek());
                 }
                 st.push(i); 
             }
             return res;
         }
     
-        public ArrayList<Integer> getNearestSmallElemRight(ArrayList<Integer> A){
+        public ArrayList<Long> getNearestSmallElemRight(ArrayList<Integer> A){
             Stack<Integer> st = new Stack<>();
-            ArrayList<Integer> res = new ArrayList<>();
+            ArrayList<Long> res = new ArrayList<>();
             for(int i=A.size()-1; i>=0; i--){
-                res.add(-1);
+                res.add((long)-1);
             }
             for(int i=A.size()-1; i>=0; i--){
     
@@ -84,41 +84,41 @@ public class MaxMinSum{
                     st.pop();
                 }
                 if(st.empty()){
-                    res.set(i, A.size());
+                    res.set(i, (long)A.size());
                 }
                 else{
-                    res.set(i, (Integer)st.peek());
+                    res.set(i, (long)st.peek());
                 }
                 st.push(i);
             }
             return res;
         }
     
-        public ArrayList<Integer> getNearestGreaterElemLeft(ArrayList<Integer> A){
+        public ArrayList<Long> getNearestGreaterElemLeft(ArrayList<Integer> A){
             Stack<Integer> st = new Stack<>();
-            ArrayList<Integer> res = new ArrayList<>();
+            ArrayList<Long> res = new ArrayList<>();
     
             for(int i=0; i< A.size(); i++){
     
-                while(!st.empty() && A.get((Integer)st.peek())<=A.get(i)){
+                while(!st.empty() && A.get((Integer)st.peek())<A.get(i)){
                     st.pop();
                 }
                 if(st.empty()){
-                    res.add(-1);
+                   res.add((long)-1);
                 }
                 else{
-                    res.add((Integer)st.peek());
+                    res.add((long)st.peek());
                 }
                 st.push(i); 
             }
             return res;
         }
     
-        public ArrayList<Integer> getNearestGreaterElemRight(ArrayList<Integer> A){
+        public ArrayList<Long> getNearestGreaterElemRight(ArrayList<Integer> A){
             Stack<Integer> st = new Stack<>();
-            ArrayList<Integer> res = new ArrayList<>();
+            ArrayList<Long> res = new ArrayList<>();
             for(int i=A.size()-1; i>=0; i--){
-                res.add(-1);
+                res.add((long)-1);
             }
             for(int i=A.size()-1; i>=0; i--){
     
@@ -126,14 +126,14 @@ public class MaxMinSum{
                     st.pop();
                 }
                 if(st.empty()){
-                    res.set(i, A.size());
+                    res.set(i, (long)A.size());
                 }
                 else{
-                    res.set(i, (Integer)st.peek());
+                    res.set(i, (long)st.peek());
                 }
                 st.push(i);
             }
             return res;
         }
-    //528969747
+        
 }
