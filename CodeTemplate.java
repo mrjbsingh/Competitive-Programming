@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class CodeTemplate{
     public static void main(String[] args) {
@@ -190,5 +191,14 @@ public class CodeTemplate{
         catch (InterruptedException e) {
             e.printStackTrace();
         } 
+    }
+
+    String useStringBuilder(Stack st){
+        StringBuilder sb = new StringBuilder();
+        while(!st.isEmpty())
+        {
+            sb.append(st.pop());
+        }
+        return sb.reverse().toString();
     }
 }
