@@ -38,14 +38,9 @@ public class BoringSubString{
         char tempOdd[] = odd.toString().toCharArray();
         Arrays.sort(tempEven); System.out.println(tempEven);
         Arrays.sort(tempOdd); System.out.println(tempOdd);
-        // for(int i=0; i<tempEven.length; i++){
-        //     System.out.print(tempEven[i]+" "+i);
-        // }System.out.println();
+        
         int ev=tempEven.length, od=tempOdd.length;
-        System.out.println((tempEven[ev-1]-tempOdd[0]));
-        System.out.println(tempOdd[od-1]-tempOdd[0]);
-        System.out.println(tempEven[ev-1]-tempOdd[od-1]);
-        System.out.println(tempEven[0]-tempOdd[0]);
+        
         if(Math.abs(tempEven[ev-1]-tempOdd[0])!=1 || Math.abs(tempOdd[od-1]-tempOdd[0])!=1 || Math.abs(tempEven[ev-1]-tempOdd[od-1])!=1 || Math.abs(tempEven[0]-tempOdd[0])!=1){
             return 1;
         }
