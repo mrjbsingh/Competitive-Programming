@@ -35,4 +35,46 @@ public final class UtilityClassLL {
         }
         return head;
     }
+
+    public static ListNode reverseList(ListNode A) {
+
+       ListNode prevStart=null, curr=null, nxt=null;
+        int count= A!=null?1:0;
+        /*
+        Adding a buffer node to avoid null pointer exception while reversing from head
+         */
+       ListNode temp = new ListNode(-1);
+        temp.next = A;
+        A=temp;
+        curr=A;
+
+        prevStart=curr;
+        curr = curr.next;
+
+        //System.out.println(prevStart.val +" "+curr.val);
+        while (curr.next!=null){
+            nxt = curr.next;
+            curr.next = nxt.next;
+            nxt.next = prevStart.next;
+            prevStart.next = nxt;
+            //printLL(A);
+        }
+
+        return A.next;
+    }
+
+    public static ListNode mergeLinkList(ListNode x, ListNode y){
+        ListNode xnext, ynext, head;
+        head = x;
+        while (x!=null && y!=null){
+            System.out.println("x "+x.val +" y "+y.val);
+            xnext = x.next;
+            x.next = y;
+            ynext = y.next;
+            y.next = xnext;
+            x = xnext;
+            y = ynext;
+        }
+        return head;
+    }
 }
