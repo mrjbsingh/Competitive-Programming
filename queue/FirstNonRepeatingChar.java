@@ -20,33 +20,43 @@ public class FirstNonRepeatingChar {
         System.out.println(res);
     }
     public String solve(String A) {
-            Deque<Character> deque = new LinkedList<>();
-            int flag[] = new int[26];
-            StringBuilder res = new StringBuilder();
-            for (int i = 0; i < A.length(); i++) {
-                char ch = A.charAt(i);
-                int index = (int)ch-(int)'a';
-                flag[index]++;
-                if(deque.isEmpty()){
-                    if(flag[index]<=1)
-                    deque.add(ch);
-                        res.append(ch);
-                }else{
-                    System.out.println(" stream "+ ch+ " contains "+deque.contains(ch));
-                    if(flag[index]<2 && deque.contains(ch))
-                        deque.removeFirstOccurrence(ch);
-                    else {
-                        if(flag[index]<=1)
-                        deque.add(ch);
-                    }
-                    if(!deque.isEmpty())
-                        res.append(deque.getFirst());
-                    else
-                        res.append("#");
-                }
-            }
+        Queue<Character> queue = new LinkedList<>();
+        int flag[] = new int[27];
+        for (int i = 0; i < 27; i++) {
+            flag[i]=0;
+        }
+        StringBuilder res = new StringBuilder();
 
-            return res.toString();
+        for (int i = 0; i < A.length(); i++) {
+            char ch = A.charAt(i);
+            int index = (int)ch-(int)'a';
+            flag[index]++;
+            if(queue.isEmpty()){
+                if(flag[index]<=1){
+                    queue.add(ch);
+                    res.append(ch);
+                }else {
+                    res.append("#");
+                }
+
+            }else{
+                System.out.println(" stream "+ ch+ " contains "+queue.contains(ch));
+                if(flag[index]>=1 && flag[index]<3)
+                    queue.remove(ch);
+                if(flag[index]<=1)
+                    queue.add(ch);
+
+                if(!queue.isEmpty())
+                    res.append(queue.peek());
+                else
+                    res.append("#");
+            }
+            System.out.println(flag[index]);
+            System.out.println(queue.toString());
+            //System.out.println(res.toString());
+        }
+
+        return res.toString();
     }
 
 }
