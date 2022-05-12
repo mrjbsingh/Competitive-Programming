@@ -28,23 +28,23 @@ public class GetMinStack2 {
         }
     }
     public Stack<Integer> st = new Stack<>();
-    public Deque<Integer> deque = new LinkedList<>();  // queue will contain the index of min element instead of min element
+    public Stack<Integer> st1 = new Stack<>();  // stack will contain the index of min element instead of min element
     public void push(int x) {
         st.push(x);
-        if(!deque.isEmpty()&& st.get(deque.peekLast())> x){
-            deque.add(st.indexOf(x));
-        }else if(deque.isEmpty()){
-            deque.add(st.indexOf(x));
+        if(!st1.isEmpty()&& st1.peek()>= x){
+            st1.push(x);
+        }else if(st1.isEmpty()){
+            st1.push(x);
         }
     }
 
     public void pop() {
         if(st.isEmpty())
             return;
-        int index = st.indexOf(st.peek());
+        int elem = st.peek();
         st.pop();
-        if(deque.getLast().equals(index)){
-            deque.removeLast();
+        if(st1.peek().equals(elem)){
+            st1.pop();
         }
     }
 
@@ -55,9 +55,9 @@ public class GetMinStack2 {
     }
 
     public int getMin() {
-        if(deque.isEmpty())
+        if(st1.isEmpty())
             return -1;
-        return st.get(deque.getLast());
+        return st1.peek();
     }
 }
 //
