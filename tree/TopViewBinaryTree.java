@@ -3,8 +3,25 @@ package tree;
 import java.util.*;
 
 /*
-   Given a binary tree, return the level order traversal of its nodes' values.
-   (i.e., from left to right, level by level).
+   Given a binary tree of integers denoted by root A. Return an array of integers representing the top view of the Binary tree.
+
+   The top view of a Binary Tree is a set of nodes visible when the tree is visited from the top.
+
+   Return the nodes in any order.
+Input 1:
+
+
+            1
+          /   \
+         2    3
+        / \  / \
+       4   5 6  7
+      /
+     8
+Output 1:
+
+ [1, 2, 4, 8, 3, 7]
+
  */
 public class TopViewBinaryTree {
     public static void main(String[] args) {
