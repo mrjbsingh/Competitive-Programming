@@ -1,9 +1,6 @@
 package my.utility;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class CodeTemplate{
     public static void main(String[] args) {
@@ -77,6 +74,44 @@ public class CodeTemplate{
             }
             else if(i1.start > i2.start)
                 return 1;
+            else
+                return -1;
+        }
+    }
+    /*Input : If our 2D array is given as (Order 4X4)
+        39 27 11 42
+                10 93 91 90
+                54 78 56 89
+                24 64 20 65
+    Sorting it by values in column 3
+    Output : 39 27 11 42
+            24 64 20 65
+            54 78 56 89
+            10 93 91 90
+    */
+    public int sort2dRawArr(int[][] tiles) {
+        // tiles is 2d arr we can sort it based on particular column value
+
+        Arrays.sort(tiles, new Sort2dArr(0));
+
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                System.out.print(tiles[i][j]+",");
+            }
+            System.out.println();
+        }
+
+        return 0;
+    }
+    class Sort2dArr implements Comparator<int []>{
+        int column;
+        Sort2dArr(int column){
+            this.column = column;
+        }
+        public int compare(final int entry1[], final int entry2[]){
+            if(entry1[column]>= entry2[column]){
+                return 1;
+            }
             else
                 return -1;
         }

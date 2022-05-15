@@ -1,8 +1,6 @@
-package leetcode_contest;
+package leetcode.leetcode_contest;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 You are given a 0-indexed integer array nums of length n.
