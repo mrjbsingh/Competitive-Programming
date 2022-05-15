@@ -20,7 +20,7 @@ public class DeepestLeaveSum {
         root.right.left.right = new TreeNode(5);
 
         DeepestLeaveSum obj = new DeepestLeaveSum();
-        ArrayList<ArrayList<Integer>> res = obj.levelOrder(root);
+        int res = obj.deepestLeavesSum(root);
         System.out.println(res);
     }
     //Definition for binary tree
