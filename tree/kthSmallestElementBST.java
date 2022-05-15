@@ -1,13 +1,12 @@
 package tree;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
 /*
     inorderTraversal of tree without using recursion
  */
-public class kthSmallestElement {
+public class kthSmallestElementBST {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
@@ -21,7 +20,7 @@ public class kthSmallestElement {
 
         int k = sc.nextInt();
 
-        kthSmallestElement obj = new kthSmallestElement();
+        kthSmallestElementBST obj = new kthSmallestElementBST();
         int res = obj.kthSmallest(root, k);
         System.out.println(res);
     }
