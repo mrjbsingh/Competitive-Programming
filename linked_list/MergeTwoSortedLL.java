@@ -1,30 +1,30 @@
-package linked.list;
+package linked_list;
 
 import java.util.Scanner;
 
 /*
-Reverse a linked list A from position B to C.
+Merge two sorted linked lists, A and B, and return it as a new list.
 
-NOTE: Do it in-place and in one-pass.
+The new list should be made by splicing together the nodes of the first two lists and should also be sorted.
 Input 1:
 
- A = 1 -> 2 -> 3 -> 4 -> 5
- B = 2
- C = 4
+ A = 5 -> 8 -> 20
+ B = 4 -> 11 -> 15
+ Output 1:
 
-Output 1:
- 1 -> 4 -> 3 -> 2 -> 5
+ 4 -> 5 -> 8 -> 11 -> 15 -> 20
  */
-public class ReverseLL2 {
+public class MergeTwoSortedLL {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
         int B = sc.nextInt();
         int C = sc.nextInt();
 
-        ReverseLL2 ba = new ReverseLL2();
+        MergeTwoSortedLL ba = new MergeTwoSortedLL();
         ListNode A = ba.generateLL(10);
-        ListNode res = ba.reverseBetween( A, B, C);
+        ListNode B = ba.generateLL(5);
+        ListNode res = ba.mergeTwoLists( A, B);
         ba.printLL(res);
     }
 
@@ -36,34 +36,33 @@ public class ReverseLL2 {
     };
     // 1->2->3->4->5->6->7
     // 1->2->6->5->4->3->7
-    public ListNode reverseBetween(ListNode A, int B, int C) {
-
-        ListNode prevStart=null, curr=null, nxt=null;
-        int count= A!=null?1:0;
-        /*
-        Adding a buffer node to avoid null pointer exception while reversing from head
-         */
-        ListNode temp = new ListNode(-1);
-        temp.next = A;
-        A=temp;
-
-        curr=A;
-        while(count<=B){
-            prevStart=curr;
-            curr = curr.next;
-            count++;
+    public ListNode mergeTwoLists(ListNode A, ListNode B) {
+        ListNode x=A, y=B;
+        ListNode z, head;
+        if(x.val > y.val){
+            head = y;
+            y = y.next;
+        }else{
+            head = x;
+            x = x.next;
         }
-        //System.out.println(prevStart.val +" "+curr.val);
-        while (count<=C){
-            nxt = curr.next;
-            curr.next = nxt.next;
-            nxt.next = prevStart.next;
-            prevStart.next = nxt;
-            count++;
-            //printLL(A);
+        z = head;
+        while(x!= null && y!= null){
+            if(x.val > y.val){
+                z.next = y;
+                y = y.next;
+                z = z.next;
+            }else{
+                z.next = x;
+                x = x.next;
+                z = z.next;
+            }
         }
-
-        return A.next;
+        if(x!= null)
+            z.next = x;
+        if(y!= null)
+            z.next = y;
+        return head;
     }
     public void printLL(ListNode head){
         ListNode curr=head;
@@ -77,7 +76,7 @@ public class ReverseLL2 {
     public ListNode generateLL(int length){
         ListNode head=null, curr= null;
         for(int i=1; i<length; i++){
-            ListNode temp = new ListNode(i);
+            ListNode temp = new ListNode(i+length);
             if(head == null){
                 head = temp;
                 curr= head;

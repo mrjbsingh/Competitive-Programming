@@ -1,4 +1,4 @@
-package linked.list;
+package linked_list;
 
 import java.util.Scanner;
 
@@ -15,14 +15,16 @@ Input 1:
 Output 1:
  1 -> 4 -> 3 -> 2 -> 5
  */
-public class ReverseLL {
+public class ReverseLL2 {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
+        int B = sc.nextInt();
+        int C = sc.nextInt();
 
-        ReverseLL ba = new ReverseLL();
-        ListNode A = ba.generateLL(5);
-        ListNode res = ba.reverseList(A);
+        ReverseLL2 ba = new ReverseLL2();
+        ListNode A = ba.generateLL(10);
+        ListNode res = ba.reverseBetween( A, B, C);
         ba.printLL(res);
     }
 
@@ -34,7 +36,7 @@ public class ReverseLL {
     };
     // 1->2->3->4->5->6->7
     // 1->2->6->5->4->3->7
-    public ListNode reverseList(ListNode A) {
+    public ListNode reverseBetween(ListNode A, int B, int C) {
 
         ListNode prevStart=null, curr=null, nxt=null;
         int count= A!=null?1:0;
@@ -44,17 +46,20 @@ public class ReverseLL {
         ListNode temp = new ListNode(-1);
         temp.next = A;
         A=temp;
+
         curr=A;
-
-        prevStart=curr;
-        curr = curr.next;
-
+        while(count<=B){
+            prevStart=curr;
+            curr = curr.next;
+            count++;
+        }
         //System.out.println(prevStart.val +" "+curr.val);
-        while (curr.next!=null){
+        while (count<=C){
             nxt = curr.next;
             curr.next = nxt.next;
             nxt.next = prevStart.next;
             prevStart.next = nxt;
+            count++;
             //printLL(A);
         }
 

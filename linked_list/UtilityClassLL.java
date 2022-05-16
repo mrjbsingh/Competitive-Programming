@@ -1,4 +1,4 @@
-package linked.list;
+package linked_list;
 
 /*
 This is utility class for Linked List where we have lots of common method that can be used while coding

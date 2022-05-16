@@ -1,23 +1,29 @@
-package linked.list;
+package linked_list;
 
 import java.util.Scanner;
 
 /*
-Given a linked list of integers, find and return the middle element of the linked list.
+Reverse a linked list A from position B to C.
 
-NOTE: If there are N nodes in the linked list and N is even then return the (N/2 + 1)th element.
+NOTE: Do it in-place and in one-pass.
+Input 1:
 
+ A = 1 -> 2 -> 3 -> 4 -> 5
+ B = 2
+ C = 4
+
+Output 1:
+ 1 -> 4 -> 3 -> 2 -> 5
  */
-public class MidElemLL {
+public class ReverseLL {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
 
-        MidElemLL ba = new MidElemLL();
-        ListNode A = ba.generateLL(N);
-        int res = ba.solve( A);
-        System.out.println(res);
+        ReverseLL ba = new ReverseLL();
+        ListNode A = ba.generateLL(5);
+        ListNode res = ba.reverseList(A);
+        ba.printLL(res);
     }
 
      //Definition for singly-linked list with a random pointer.
@@ -28,16 +34,32 @@ public class MidElemLL {
     };
     // 1->2->3->4->5->6->7
     // 1->2->6->5->4->3->7
-    public int solve(ListNode A) {
-        ListNode fast=A;
-        ListNode slow=A;
-        while(fast!=null && fast.next!=null){
-            fast = fast.next.next;
-            slow= slow.next;
-        }
-        return slow.val;
-    }
+    public ListNode reverseList(ListNode A) {
 
+        ListNode prevStart=null, curr=null, nxt=null;
+        int count= A!=null?1:0;
+        /*
+        Adding a buffer node to avoid null pointer exception while reversing from head
+         */
+        ListNode temp = new ListNode(-1);
+        temp.next = A;
+        A=temp;
+        curr=A;
+
+        prevStart=curr;
+        curr = curr.next;
+
+        //System.out.println(prevStart.val +" "+curr.val);
+        while (curr.next!=null){
+            nxt = curr.next;
+            curr.next = nxt.next;
+            nxt.next = prevStart.next;
+            prevStart.next = nxt;
+            //printLL(A);
+        }
+
+        return A.next;
+    }
     public void printLL(ListNode head){
         ListNode curr=head;
         while(curr!=null){

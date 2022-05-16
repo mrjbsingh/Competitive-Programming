@@ -1,6 +1,4 @@
-package linked.list;
-
-import org.w3c.dom.ls.LSInput;
+package linked_list;
 
 import java.util.Scanner;
 
