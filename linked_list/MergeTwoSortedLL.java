@@ -18,8 +18,6 @@ public class MergeTwoSortedLL {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
-        int B = sc.nextInt();
-        int C = sc.nextInt();
 
         MergeTwoSortedLL ba = new MergeTwoSortedLL();
         ListNode A = ba.generateLL(10);
