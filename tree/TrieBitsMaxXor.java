@@ -6,82 +6,84 @@ import java.util.Map;
 import java.util.Scanner;
 
 /*
-   Given an array where elements are sorted in ascending order, convert it to a
-   height Balanced Binary Search Tree (BBST).
+ Given an array of integers A, find and return the maximum result of A[i] XOR A[j],
+ where i, j are the indexes of the array.
 
-Balanced tree : a height-balanced binary tree is defined as a binary tree in which
-the depth of the two subtrees of every node never differ by more than 1.
  */
 public class TrieBitsMaxXor {
     public static void main(String[] args) {
         System.out.println("hello");
         Scanner sc = new Scanner(System.in);
         int size1 = sc.nextInt();
-        ArrayList<String> dictonary = new ArrayList<>();
+        ArrayList<Integer> A = new ArrayList<>();
         for (int i = 0; i < size1; i++) {
-            dictonary.add(sc.next());
-        }
-        int size2 = sc.nextInt();
-        ArrayList<String> searchWords = new ArrayList<>();
-        for (int i = 0; i < size2; i++) {
-            searchWords.add(sc.next());
+            A.add(sc.nextInt());
         }
 
         TrieBitsMaxXor obj = new TrieBitsMaxXor();
-        ArrayList<Integer> res = obj.solve(dictonary, searchWords);
+        int res = obj.solve(A);
         System.out.println(res);
     }
     //Definition for binary tree
     static class TrieNode {
-        char val;
-        int freq;
-        Map<Character, TrieNode> children;
-        TrieNode(char x) {
+        Boolean val;
+        Integer num;
+        Map<Boolean, TrieNode> child;
+
+        TrieNode(Boolean x) {
             val = x;
-            freq= 0;
-            children = new HashMap<>();
+            num = null;
+            child = new HashMap<>();
         }
+    }
+    public int solve(ArrayList<Integer> A) {
+        TrieNode root = new TrieNode(false);
+        for (int i = 0; i < A.size(); i++) {
+            insertIntoTrie(root, A.get(i));
+        }
+
+        return findMaxXor(root, A);
 
     }
 
-    public ArrayList<Integer> solve(ArrayList<String> dictionary, ArrayList<String> searchWords) {
-        TrieNode trieNode = new TrieNode('0');
-        for (int i = 0; i < dictionary.size(); i++) {
-            insertIntoTrie(trieNode, dictionary.get(i));
+    private int findMaxXor(TrieNode root, ArrayList<Integer> A) {
+        int maxXor = Integer.MIN_VALUE;
+        for (int i = 0; i < A.size(); i++) {
+            int  bestNum = searchIntoTrie(root, A.get(i));
+            System.out.println("for num "+ A.get(i)+" bestNum is "+bestNum);
+            maxXor = Math.max(maxXor, bestNum^A.get(i));
         }
-        ArrayList<Integer>  res = new ArrayList<>();
-        for (int i = 0; i < searchWords.size(); i++) {
-            res.add(searchIntoTrie(trieNode, searchWords.get(i)));
-        }
-
-        return res;
-
+        return maxXor;
     }
-     public void insertIntoTrie(TrieNode trieNode, String inputWord){
-         System.out.println(inputWord);
-         char word[] = inputWord.toCharArray();
-         for (int j = 0; j < word.length; j++) {
-             if(trieNode.children.containsKey(word[j])){
-                 trieNode = trieNode.children.get(word[j]);
-             }else{
-                 trieNode.children.put(word[j], new TrieNode(word[j]));
-                 trieNode = trieNode.children.get(word[j]);
-             }
+
+    public void insertIntoTrie(TrieNode trieNode, int num){
+
+         for (int i = 31; i >=0 ; i--) {
+            Boolean bit = (num & (1<<i))>0;
+            if(trieNode.child.containsKey(bit)){
+                trieNode = trieNode.child.get(bit);
+            }
+            else {
+                trieNode.child.put(bit, new TrieNode(bit));
+                trieNode = trieNode.child.get(bit);
+            }
          }
-         trieNode.freq++;
+         trieNode.num = num;
      }
-    public int searchIntoTrie(TrieNode trieNode, String searchWord){
-        char word[] = searchWord.toCharArray();
-        for (int j = 0; j < word.length; j++) {
-            if(trieNode.children.containsKey(word[j])){
-                trieNode = trieNode.children.get(word[j]);
-            }else{
-                return 0;
+    public int searchIntoTrie(TrieNode trieNode, int num){
+        System.out.println("Num "+ num);
+        for (int i = 31; i >=0 ; i--) {
+            Boolean bit = (num & (1<<i))>0;
+            //System.out.println(bit);
+            if(trieNode.child.containsKey(!bit)){
+                //System.out.println("Enter into anti-bit"+ !bit);
+                trieNode = trieNode.child.get(!bit);
+            }
+            else if(trieNode.child.containsKey(bit)){
+                trieNode = trieNode.child.get(bit);
             }
         }
-        if(trieNode.freq>0)
-            return 1;
-        else
-            return 0;
+        return trieNode.num;
     }
 }
+//6 20 30 15 25 10 5
