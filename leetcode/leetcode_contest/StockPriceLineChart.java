@@ -2,7 +2,9 @@ package leetcode.leetcode_contest;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
+/*
+https://leetcode.com/problems/minimum-lines-to-represent-a-line-chart/
+ */
 public class StockPriceLineChart {
     public int minimumLines(int[][] stockPrices) {
         int n = stockPrices.length;
