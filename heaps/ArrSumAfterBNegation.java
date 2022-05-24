@@ -19,9 +19,9 @@ public class ArrSumAfterBNegation {
         for (int i = 0; i < size1; i++) {
             A.add(sc.nextInt());
         }
-    
+        int B = sc.nextInt();
         ArrSumAfterBNegation pm = new ArrSumAfterBNegation();
-        ArrayList<Integer> res = pm.solve(A);
+        int res = pm.solve(A, B);
         System.out.println(res);
         
     }
