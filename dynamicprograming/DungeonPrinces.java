@@ -17,31 +17,28 @@ public class DungeonPrinces {
     public int calculateMinimumHP(ArrayList<ArrayList<Integer>> arr) {
         int m = arr.size();
         int n = arr.get(0).size();
-        int left, up, enrgyLast = arr.get(m-1).get(n-1);
-        for (int i = 0; i <m; i++) {
-            for (int j = 0; j <n; j++) {
-                if(i-1>=0 && j-1>=0){
-                    left= arr.get(i-1).get(j);
-                    up = arr.get(i).get(j-1);
-                    arr.get(i).set(j, arr.get(i).get(j) + Math.max( left, up));
-                }else if(i-1>=0){
-                    left= arr.get(i-1).get(j);
-                    arr.get(i).set(j, arr.get(i).get(j) + left);
-                }else if(j-1>=0){
-                    up = arr.get(i).get(j-1);
-                    arr.get(i).set(j, arr.get(i).get(j) + up);
+        int right, down, enrgyLast = arr.get(m-1).get(n-1);
+        //arr.get(0).set(0, Math.max(1, 1-arr.get(0).get(0)));
+        for (int i = m-1; i >=0; i--) {
+            for (int j = n-1; j >=0; j--) {
+                if(i+1<m && j+1<n){
+                    right= arr.get(i).get(j+1);
+                    down = arr.get(i+1).get(j);
+                    arr.get(i).set(j, Math.max(1,Math.min( right, down) - arr.get(i).get(j)));
+                }else if(j+1<n){
+                    right= arr.get(i).get(j+1);
+                    arr.get(i).set(j, Math.max(1, right - arr.get(i).get(j)));
+                }else if(i+1<m){
+                    down = arr.get(i+1).get(j);
+                    arr.get(i).set(j, Math.max(1, down - arr.get(i).get(j)));
+                }else {
+                    arr.get(i).set(i, Math.max(1, 1-arr.get(i).get(i)));
                 }
             }
         }
-        System.out.println(arr.get(m-1).get(n-1));
-        if(arr.get(m-1).get(n-1)>=0)
-            return 1;
-        else {
-            if(enrgyLast>0){
-                arr.get(m-1).set(n-1,arr.get(m-1).get(n-1)-enrgyLast);
-            }
-            return -1*arr.get(m-1).get(n-1)+1;
-        }
+
+
+        return arr.get(0).get(0);
     }
     public int minimumTotal(ArrayList<ArrayList<Integer>> arr) {
         int n = arr.size();
