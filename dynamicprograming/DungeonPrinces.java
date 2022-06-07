@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
-mentee-dashboard/class/26792/assignment/problems/17?navref=cl_tt_lst_sl
+mentee-dashboard/class/26792/assignment/problems/17
  */
 public class DungeonPrinces {
     public static void main(String[] args) {
@@ -38,15 +38,6 @@ public class DungeonPrinces {
         }
 
 
-        return arr.get(0).get(0);
-    }
-    public int minimumTotal(ArrayList<ArrayList<Integer>> arr) {
-        int n = arr.size();
-        for (int i = n-2; i >=0; i--) {
-            for (int j = 0; j <=i; j++) {
-                arr.get(i).set(j, arr.get(i).get(j) + Math.min(arr.get(i+1).get(j), arr.get(i+1).get(j+1)));
-            }
-        }
         return arr.get(0).get(0);
     }
 }
