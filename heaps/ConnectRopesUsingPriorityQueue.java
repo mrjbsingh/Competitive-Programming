@@ -28,7 +28,8 @@ public class ConnectRopesUsingPriorityQueue {
         
     }
     public int solve(int[] A) {
-        PriorityQueue< Integer > pq = new PriorityQueue();
+        PriorityQueue< Integer > pq = new PriorityQueue<>();
+        //max heap --> new PriorityQueue<>((a,b)-> b-a);
         int cost = 0;
 
         for (int x: A) {

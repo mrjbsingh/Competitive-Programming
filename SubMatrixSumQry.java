@@ -13,7 +13,7 @@ public class SubMatrixSumQry{
  
         // Defining the file name of the file
         Path fileName = Path.of(
-            "/home/jayendrasingh/code/cp/demo.txt");
+            "demo2.txt");
 
         int size1 = 490;//sc.nextInt();
         int size2 = 290;//sc.nextInt();
@@ -39,7 +39,7 @@ public class SubMatrixSumQry{
         int r1,c1,r2,c2;
         long sum =0;
         long M = 1000000007;
-        for(int i=0; i<A.size(); i++){
+        for(int i=0; i<A.size(); i++){   //initializing resultant matrix with all zeros
                 ArrayList<Long> row = new ArrayList<>();
                 for(int j=0; j<A.get(i).size(); j++){
                      row.add(sum);

@@ -36,10 +36,17 @@ public class SpiralMatrix{
              } 
            
         }
-    return new ArrayList<ArrayList<Integer>>();
+        for(int i=0;i< arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+        return new ArrayList<ArrayList<Integer>>();
     }
     
     void print2DArray(ArrayList<ArrayList<Integer>> A){
+        System.out.println("hellllllll");
         for(int i=0;i<A.size();i++){
               for(int j=0;j<A.get(i).size();j++){
                   System.out.print(A.get(i).get(j)+" ");
