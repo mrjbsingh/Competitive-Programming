@@ -212,4 +212,11 @@ public class CodeTemplate{
         }
         return sb.reverse().toString();
     }
+
+    //how to get max value in map using collections
+    public static int getMax(){
+        Map<Integer, Integer> map = new HashMap<>();
+        return Collections.max(map.values());    //        int max = Collections.max(map.values());
+    }
+
 }
